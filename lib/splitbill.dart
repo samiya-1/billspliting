@@ -1,3 +1,4 @@
+import 'dart:math';
 
 import 'package:billspliting/result.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +13,10 @@ class Split extends StatefulWidget {
 class _SplitState extends State<Split> {
 
   double _value = 0;
+  double value=0;
   double counter=0;
   String res = "";
-  String back='';
+  String change="";
   TextEditingController tax=TextEditingController();
 
   total(String amt){
@@ -36,7 +38,7 @@ class _SplitState extends State<Split> {
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('SPLIT BILL',style: TextStyle(
+        title: const Text('SPLIT BILL',style: TextStyle(
           color: Colors.white,
           fontSize: 25,
           fontWeight: FontWeight.bold,
@@ -45,7 +47,7 @@ class _SplitState extends State<Split> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Padding(
               padding: const EdgeInsets.only(left: 15,right: 15,top: 2),
               child: Container(
@@ -61,33 +63,39 @@ class _SplitState extends State<Split> {
                       padding: const EdgeInsets.only(left: 39,right: 15),
                       child: Column(
                         children: [
-                          SizedBox(height: 35,),
-                          Text('Total',style: TextStyle(
+                          const SizedBox(height: 35,),
+                          const Text('Total',style: TextStyle(
                             color: Colors.white,
                             fontSize: 38,
                             fontWeight: FontWeight.bold,
                           )),
-                          SizedBox(height: 15,),
-                          Text(res,style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
-                          )),
+                          const SizedBox(height: 15,),
+                          Row(
+                            children: [
+                              Icon(Icons.currency_rupee,color: Colors.white,),
+                              Text(res,style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                              )),
+                            ],
+                          ),
+
                         ],
                       ),
                     ),
-                    SizedBox(width: 28,),
+                    const SizedBox(width: 28,),
                     Padding(
                       padding: const EdgeInsets.only(left: 15,right: 15,top: 7),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          SizedBox(height: 10,),
+                          const SizedBox(height: 10,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Column(
-                                children: [
+                                children: const [
                                   SizedBox(height: 10,),
                                   Text('Friends',style: TextStyle(
                                     color: Colors.white,
@@ -108,33 +116,30 @@ class _SplitState extends State<Split> {
                                   )),
                                 ],
                               ),
-                              SizedBox(width: 15,),
+                              const SizedBox(width: 15,),
                               Column(
                                 children: [
-                                  SizedBox(height: 10,),
-                                  Text(_value.toStringAsFixed(0),style: TextStyle(
+                                  const SizedBox(height: 10,),
+                                  Text(_value.toStringAsFixed(0),style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold,
                                   )),
-                                  SizedBox(height: 10,),
+                                  const SizedBox(height: 10,),
                                   Row(
                                     children: [
-                                      Text(tax.text,style: TextStyle(
+                                      Text(change.toString(),style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 25,
                                         fontWeight: FontWeight.bold,
                                       )),
-                                      SizedBox(width: 4,),
-                                      Text('%',style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold,
-                                      )),
+                                      const SizedBox(width: 4,),
+                                      Icon(Icons.percent,color: Colors.white,),
+
                                     ],
                                   ),
-                                  SizedBox(height: 10,),
-                                  Text('$counter',style: TextStyle(
+                                  const SizedBox(height: 10,),
+                                  Text('$counter',style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold,
@@ -150,12 +155,12 @@ class _SplitState extends State<Split> {
                 ),
               ),
             ),
-            SizedBox(height: 15,),
-            Text('How many friends ?',style: TextStyle(
+            const SizedBox(height: 15,),
+            const Text('How many friends ?',style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 28
             ),),
-            SizedBox(height: 5,),
+            const SizedBox(height: 5,),
             Slider(
                 min: 0,
                 max: 50,activeColor: Colors.green[200],
@@ -166,7 +171,7 @@ class _SplitState extends State<Split> {
                   });
                 }
             ),
-            SizedBox(height: 5,),
+            const SizedBox(height: 5,),
             Row(
               children: [
                 Padding(
@@ -175,13 +180,13 @@ class _SplitState extends State<Split> {
                     height: 110,
                     width: 220,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15),),
+                      borderRadius: const BorderRadius.all(Radius.circular(15),),
                       color: Colors.green[200],
                     ),
                     child: Column(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15,right: 15,top: 16),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 15,right: 15,top: 16),
                           child: Text('Tip',style: TextStyle(
                             color: Colors.white,
                             fontSize: 25,
@@ -197,17 +202,17 @@ class _SplitState extends State<Split> {
                                 width: 40,
                                 height: 40,
                                 child: FloatingActionButton(
-                                  child: Icon(Icons.remove,color: Colors.blueGrey,),
+                                  child: const Icon(Icons.remove,color: Colors.blueGrey,),
                                   backgroundColor: Colors.white,
                                   onPressed: () {
                                     setState(() {
 
                                     });
-                                    counter--;
+                                    counter=max(counter-1, 0);
                                   },
                                 ),
                               ),
-                              Text('$counter',style: TextStyle(
+                              Text('$counter',style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 28,
                                 fontWeight: FontWeight.bold,
@@ -216,7 +221,7 @@ class _SplitState extends State<Split> {
                                 width: 40,
                                 height: 40,
                                 child: FloatingActionButton(
-                                  child: Icon(Icons.add,color: Colors.blueGrey,),
+                                  child: const Icon(Icons.add,color: Colors.blueGrey,),
                                   backgroundColor: Colors.white,
                                   onPressed: () {
                                     setState(() {
@@ -239,13 +244,13 @@ class _SplitState extends State<Split> {
                     height: 80,
                     width: 100,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15),),
+                      borderRadius: const BorderRadius.all(Radius.circular(15),),
                       color: Colors.green[200],
                     ),
                     child: Column(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15,right: 15,top: 10),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 15,right: 15,top: 10),
                           child: Text('Tax in %',style: TextStyle(
                             color: Colors.white,
                             fontSize: 17,
@@ -263,9 +268,16 @@ class _SplitState extends State<Split> {
                                   setState(() {
                                   });
                                 },
+
+                                onChanged: (value){
+                                  setState(() {
+                                    change=value;
+                                  });
+
+                                },
                                 controller: tax,
                                 keyboardType: TextInputType.number,
-                                style: TextStyle(height: 1,fontSize: 25, color: Colors.white),
+                                style: const TextStyle(height: 1,fontSize: 25, color: Colors.white),
                               ),
                             ),
                           ),
@@ -276,7 +288,7 @@ class _SplitState extends State<Split> {
                 )
               ],
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.only(left: 50,right: 50,top: 2),
               child: Column(
@@ -316,25 +328,25 @@ class _SplitState extends State<Split> {
                 ],
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             ElevatedButton(
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Result2(friends:_value,tax:tax,total:res,tip:counter)));
               },
-              child: Text('Split Bill',style: TextStyle(
+              child: const Text('Split Bill',style: TextStyle(
                 color: Colors.white,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               )),
               style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 140.0, vertical: 15.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 140.0, vertical: 15.0),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0)
                   ),
                   primary: Colors.green[400]
               ),
             ),
-            SizedBox(height: 20,)
+            const SizedBox(height: 20,)
           ],
         ),
       ),
