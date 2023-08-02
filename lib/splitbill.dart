@@ -29,18 +29,15 @@ class _SplitState extends State<Split> {
     });
   }
 
-  calculate_bill(){
-
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        backgroundColor: Colors.grey[100],
+        backgroundColor: Colors.black,
         title: Text('SPLIT BILL',style: TextStyle(
-          color: Colors.black,
+          color: Colors.white,
           fontSize: 25,
           fontWeight: FontWeight.bold,
         ),),
